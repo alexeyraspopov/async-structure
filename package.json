@@ -1,0 +1,35 @@
+{
+  "name": "async-structure",
+  "version": "0.0.0",
+  "description": "",
+  "main": "build/async-structure.js",
+  "module": "build/async-structure.module.js",
+  "files": [
+    "build/"
+  ],
+  "scripts": {
+    "test": "jest --coverage",
+    "prepublish": "rollup --config rollup.config.js"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-jest": "^22.4.1",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-preset-env": "^1.6.1",
+    "jest": "^22.4.2",
+    "rollup": "^0.56.5",
+    "rollup-plugin-babel": "^3.0.3",
+    "rollup-plugin-multi-entry": "^2.0.2",
+    "size-limit": "^0.16.1"
+  },
+  "babel": {
+    "preset": [
+      "env"
+    ]
+  },
+  "size-limit": [
+    {
+      "path": "build/async-structure.module.js"
+    }
+  ]
+}
