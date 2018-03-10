@@ -23,7 +23,7 @@
     "size-limit": "^0.16.1"
   },
   "babel": {
-    "preset": [
+    "presets": [
       "env"
     ]
   },
