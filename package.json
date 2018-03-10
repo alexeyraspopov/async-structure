@@ -2,6 +2,7 @@
   "name": "async-structure",
   "version": "0.0.0",
   "description": "",
+  "license": "MIT",
   "main": "build/async-structure.js",
   "module": "build/async-structure.module.js",
   "files": [
