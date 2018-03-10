@@ -13,15 +13,15 @@ export class AsyncQueue {
   }
 
   [Symbol.iterator]() {
-    return new AsyncIterator(this);
+    return new AsyncQueueIterator(this);
   }
 
   [Symbol.asyncIterator]() {
-    return new AsyncIterator(this);
+    return new AsyncQueueIterator(this);
   }
 }
 
-class AsyncIterator {
+class AsyncQueueIterator {
   constructor(queue) {
     this.queue = queue;
   }
