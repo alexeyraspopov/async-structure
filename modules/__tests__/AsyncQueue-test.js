@@ -16,9 +16,17 @@ test('dequeue before enqueue', async () => {
   return expect(values).resolves.toEqual(['A', 'B']);
 });
 
-test('throw error like values', async () => {
+test('throw error like values #1', async () => {
   let queue = new AsyncQueue();
   let error = new Error();
   queue.enqueue(error);
   return expect(queue.dequeue()).rejects.toBe(error);
+});
+
+test('throw error like values #2', async () => {
+  let queue = new AsyncQueue();
+  let error = new Error();
+  let value = queue.dequeue();
+  queue.enqueue(error);
+  return expect(value).rejects.toBe(error);
 });
