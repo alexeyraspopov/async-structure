@@ -11,7 +11,26 @@ export class AsyncQueue {
   dequeue() {
     return dequeue(this, identity);
   }
+
+  [Symbol.iterator]() {
+    return new AsyncIterator(this);
+  }
+
+  [Symbol.asyncIterator]() {
+    return new AsyncIterator(this);
+  }
 }
+
+class AsyncIterator {
+  constructor(queue) {
+    this.queue = queue;
+  }
+
+  next() {
+    return dequeue(this.queue, toIteratorResult);
+  }
+}
+
 function enqueue(queue, value) {
   if (queue.pendings.length > 0) {
     let { resolve, reject } = queue.pendings.shift();
@@ -23,11 +42,12 @@ function enqueue(queue, value) {
 
 function dequeue(queue, transform) {
   return new Promise((resolve, reject) => {
+    let wrappedResolve = compose(resolve, transform);
     if (queue.values.length > 0) {
       let value = queue.values.shift();
-      return value instanceof Error ? reject(value) : resolve(value);
+      return value instanceof Error ? reject(value) : wrappedResolve(value);
     } else {
-      queue.pendings.push({ resolve: compose(resolve, transform), reject });
+      queue.pendings.push({ resolve: wrappedResolve, reject });
     }
   });
 }
@@ -38,4 +58,8 @@ function compose(f, g) {
 
 function identity(value) {
   return value;
+}
+
+function toIteratorResult(value) {
+  return { value, done: false };
 }

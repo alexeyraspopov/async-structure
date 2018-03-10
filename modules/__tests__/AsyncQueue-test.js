@@ -30,3 +30,27 @@ test('throw error like values #2', async () => {
   queue.enqueue(error);
   return expect(value).rejects.toBe(error);
 });
+
+test('async iterable interface', async () => {
+  let queue = new AsyncQueue();
+  queue.enqueue('A');
+  queue.enqueue('B');
+  let iterator = queue[Symbol.asyncIterator]();
+  let values = Promise.all([iterator.next(), iterator.next()]);
+  return expect(values).resolves.toEqual([
+    { value: 'A', done: false },
+    { value: 'B', done: false },
+  ]);
+});
+
+test('fallback iterable interface', async () => {
+  let queue = new AsyncQueue();
+  queue.enqueue('A');
+  queue.enqueue('B');
+  let iterator = queue[Symbol.iterator]();
+  let values = Promise.all([iterator.next(), iterator.next()]);
+  return expect(values).resolves.toEqual([
+    { value: 'A', done: false },
+    { value: 'B', done: false },
+  ]);
+});
