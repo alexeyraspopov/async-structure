@@ -2,11 +2,22 @@
   "name": "async-structure",
   "version": "0.0.0",
   "description": "",
+  "author": "Alexey Raspopov",
   "license": "MIT",
+  "homepage": "https://alexeyraspopov.github.io/async-structure/",
+  "repository": "alexeyraspopov/async-structure",
   "main": "build/async-structure.js",
   "module": "build/async-structure.module.js",
   "files": [
-    "build/"
+    "build/",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "keywords": [
+    "data",
+    "async",
+    "structures",
+    "algorithms"
   ],
   "scripts": {
     "test": "jest --coverage",
@@ -25,10 +36,20 @@
   },
   "babel": {
     "presets": [
-      "env"
+      [
+        "env",
+        {
+          "targets": {
+            "node": "8.9.4"
+          }
+        }
+      ]
     ]
   },
   "size-limit": [
+    {
+      "path": "build/async-structure.js"
+    },
     {
       "path": "build/async-structure.module.js"
     }
