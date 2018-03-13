@@ -21,6 +21,7 @@
   ],
   "scripts": {
     "test": "jest --coverage",
+    "ci": "sh scripts/integration.sh",
     "prepublish": "rollup --config rollup.config.js"
   },
   "devDependencies": {
@@ -29,6 +30,7 @@
     "babel-plugin-external-helpers": "^6.22.0",
     "babel-preset-env": "^1.6.1",
     "jest": "^22.4.2",
+    "jest-junit": "^3.6.0",
     "rollup": "^0.56.5",
     "rollup-plugin-babel": "^3.0.3",
     "rollup-plugin-multi-entry": "^2.0.2",
