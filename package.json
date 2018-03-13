@@ -22,7 +22,7 @@
   "scripts": {
     "test": "jest --coverage",
     "ci": "sh scripts/integration.sh",
-    "prepublish": "rollup --config rollup.config.js"
+    "prepublish": "rollup --config scripts/rollup.config.js"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
