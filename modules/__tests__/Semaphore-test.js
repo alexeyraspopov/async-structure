@@ -13,7 +13,7 @@ test('awaiting for release', async () => {
 });
 
 test('lock status checker', async () => {
-  let semaphore = new Semaphore({ value: 2 });
+  let semaphore = new Semaphore({ permits: 2 });
   expect(semaphore.locked()).toBe(false);
   semaphore.acquire();
   expect(semaphore.locked()).toBe(false);
@@ -24,17 +24,17 @@ test('lock status checker', async () => {
 });
 
 test('bounded semaphore invariant', () => {
-  let semaphore = new Semaphore({ value: 2, bounded: true });
+  let semaphore = new Semaphore({ permits: 2, bounded: true });
   let error = 'Bounded semaphore release too many times';
   semaphore.acquire();
   semaphore.release();
   expect(() => semaphore.release()).toThrow(error);
 });
 
-test('initial value validation', () => {
-  let error = 'Semaphore value must be greater than zero';
-  expect(() => new Semaphore({ value: -1 })).toThrow(error);
-  expect(() => new Semaphore({ value: 'boom' })).toThrow(error);
-  expect(() => new Semaphore({ value: null })).toThrow(error);
-  expect(() => new Semaphore({ value: 0 })).toThrow(error);
+test('initial permits validation', () => {
+  let error = 'Semaphore permits number must be greater than zero';
+  expect(() => new Semaphore({ permits: -1 })).toThrow(error);
+  expect(() => new Semaphore({ permits: 'boom' })).toThrow(error);
+  expect(() => new Semaphore({ permits: null })).toThrow(error);
+  expect(() => new Semaphore({ permits: 0 })).toThrow(error);
 });
