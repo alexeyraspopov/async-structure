@@ -42,7 +42,7 @@ function enqueue(queue, value) {
 
 function dequeue(queue, transform) {
   return new Promise((resolve, reject) => {
-    let wrappedResolve = compose(resolve, transform);
+    let wrappedResolve = (value) => resolve(transform(value));
     if (queue.values.length > 0) {
       let value = queue.values.shift();
       return value instanceof Error ? reject(value) : wrappedResolve(value);
@@ -50,10 +50,6 @@ function dequeue(queue, transform) {
       queue.pendings.push({ resolve: wrappedResolve, reject });
     }
   });
-}
-
-function compose(f, g) {
-  return a => f(g(a));
 }
 
 function identity(value) {
