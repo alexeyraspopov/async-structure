@@ -25,7 +25,7 @@ test('lock status checker', async () => {
 
 test('bounded semaphore invariant', () => {
   let semaphore = new Semaphore({ permits: 2, bounded: true });
-  let error = 'Bounded semaphore release too many times';
+  let error = 'Bounded semaphore released too many times';
   semaphore.acquire();
   semaphore.release();
   expect(() => semaphore.release()).toThrow(error);
