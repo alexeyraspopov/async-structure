@@ -1,6 +1,6 @@
 export class IdentityMap {
-  constructor() {
-    this.resources = new Map();
+  constructor(state = []) {
+    this.resources = new Map(state);
   }
 
   read(resource, key) {
