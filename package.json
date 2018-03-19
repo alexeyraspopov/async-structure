@@ -50,9 +50,11 @@
   },
   "size-limit": [
     {
+      "limit": "811 B",
       "path": "build/async-structure.js"
     },
     {
+      "limit": "822 B",
       "path": "build/async-structure.module.js"
     }
   ]
