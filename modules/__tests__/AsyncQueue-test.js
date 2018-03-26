@@ -54,3 +54,9 @@ test('fallback iterable interface', async () => {
     { value: 'B', done: false },
   ]);
 });
+
+test('initial values sequence', async () => {
+  let queue = AsyncQueue.of('A', 'B');
+  let values = Promise.all([queue.dequeue(), queue.dequeue()]);
+  return expect(values).resolves.toEqual(['A', 'B']);
+});

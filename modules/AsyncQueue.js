@@ -1,4 +1,10 @@
 export class AsyncQueue {
+  static of(...sequence) {
+    let queue = new AsyncQueue();
+    sequence.forEach(value => queue.enqueue(value));
+    return queue;
+  }
+
   constructor() {
     this.values = [];
     this.pendings = [];
