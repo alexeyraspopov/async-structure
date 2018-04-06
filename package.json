@@ -1,7 +1,7 @@
 {
   "name": "async-structure",
   "version": "0.1.0",
-  "description": "",
+  "description": "Set of advanced pattern implementations for dealing with async data and flows",
   "author": "Alexey Raspopov",
   "license": "MIT",
   "homepage": "https://alexeyraspopov.github.io/async-structure/",
