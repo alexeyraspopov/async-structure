@@ -16,10 +16,7 @@ export class Semaphore {
     }
 
     return new Promise(resolve => {
-      this.pendings.push(() => {
-        this.permits = this.permits - 1;
-        resolve(true);
-      });
+      this.pendings.push(() => resolve(this.acquire()));
     });
   }
 
